@@ -31,6 +31,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -380,7 +381,7 @@ public class ClassifierPanel extends JPanel implements
     m_ClassifierEditor.addPropertyChangeListener(new PropertyChangeListener() {
       @Override
       public void propertyChange(PropertyChangeEvent e) {
-        m_StartBut.setEnabled(true);
+        m_StartBut.setEnabled(false);
         // Check capabilities
         Capabilities currentFilter = m_ClassifierEditor.getCapabilitiesFilter();
         Classifier classifier = (Classifier) m_ClassifierEditor.getValue();
@@ -427,8 +428,7 @@ public class ClassifierPanel extends JPanel implements
       "ClassifierPanel_EvalWRTCostsBut_SetToolTipText_Text"));
     m_OutputPredictionsTextBut.setToolTipText(Messages.getInstance().getString(
       "ClassifierPanel_OutputPredictionsTextBut_SetToolTipText_Text"));
-    m_OutputAdditionalAttributesText.setToolTipText(Messages.getInstance()
-      .getString(
+    m_OutputAdditionalAttributesText.setToolTipText(Messages.getInstance().getString(
         "ClassifierPanel_OutputAdditionalAttributesText_SetToolTipText_Text"));
     m_RandomLab.setToolTipText(Messages.getInstance().getString(
       "ClassifierPanel_RandomLab_SetToolTipText_Text"));
@@ -447,7 +447,7 @@ public class ClassifierPanel extends JPanel implements
 
     m_StorePredictionsBut.setSelected(ExplorerDefaults
       .getClassifierStorePredictionsForVis());
-    m_OutputModelBut.setSelected(ExplorerDefaults.getClassifierOutputModel());
+//    m_OutputModelBut.setSelected(ExplorerDefaults.getClassifierOutputModel());
     m_OutputPerClassBut.setSelected(ExplorerDefaults
       .getClassifierOutputPerClassStats());
     m_OutputConfusionBut.setSelected(ExplorerDefaults
@@ -3212,6 +3212,7 @@ public class ClassifierPanel extends JPanel implements
     // Check capabilities
     Capabilities currentFilter = m_ClassifierEditor.getCapabilitiesFilter();
     Classifier classifier = (Classifier) m_ClassifierEditor.getValue();
+    System.out.println("zakaria");
     Capabilities currentSchemeCapabilities = null;
     if (classifier != null && currentFilter != null
       && (classifier instanceof CapabilitiesHandler)) {

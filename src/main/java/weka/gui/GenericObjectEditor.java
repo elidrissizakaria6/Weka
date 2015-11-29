@@ -171,7 +171,6 @@ public class GenericObjectEditor implements PropertyEditor, CustomPanelSupplier 
 
     try {
       GenericPropertiesCreator creator = new GenericPropertiesCreator();
-
       // dynamic approach?
       if (creator.useDynamic()) {
         try {
@@ -632,6 +631,8 @@ public class GenericObjectEditor implements PropertyEditor, CustomPanelSupplier 
           public void actionPerformed(ActionEvent e) {
             if (e.getSource() == m_FilterButton) {
               CapabilitiesFilterDialog dialog = new CapabilitiesFilterDialog();
+              CapabilitiesHandler owner = null;
+			m_CapabilitiesFilter.and(new Capabilities(owner));
               dialog.setCapabilities(m_CapabilitiesFilter);
               dialog.setPopup(m_Self);
               dialog.setVisible(true);
@@ -1953,7 +1954,6 @@ public class GenericObjectEditor implements PropertyEditor, CustomPanelSupplier 
         result.add(items[i]);
       }
     }
-
     return result;
   }
 

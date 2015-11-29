@@ -236,6 +236,7 @@ public class KnowledgeFlowApp extends JPanel implements PropertyChangeListener {
 
     try {
       TreeMap wrapList = new TreeMap();
+      GenericObjectEditor genericObjectEditor=new GenericObjectEditor();
       GenericPropertiesCreator creator = new GenericPropertiesCreator();
       Properties GEOProps = null;
 

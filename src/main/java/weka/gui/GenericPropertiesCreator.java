@@ -95,6 +95,7 @@ public class GenericPropertiesCreator {
    * @see #PROPERTY_FILE
    */
   protected static String CREATOR_FILE = "weka/gui/GenericPropertiesCreator.props";
+  protected static String CREATOR_FILE_CUSTOM = "weka/gui/GenericPropertiesCreatorCustom.props";
   
   /** The name of the properties file that lists classes/interfaces/superclasses
    * to exclude from being shown in the GUI. See the file for more information.
@@ -115,7 +116,7 @@ public class GenericPropertiesCreator {
    * @see GenericObjectEditor 
    * @see #USE_DYNAMIC 
    */
-  protected static String PROPERTY_FILE = "weka/gui/GenericObjectEditor.props";
+  protected static String PROPERTY_FILE = "C:/Users/Zakaria/workspace/tmp/weka/src/main/java/weka/gui/GenericObjectEditor.props";
   
   /** the input file with the packages */
   protected String m_InputFilename;
@@ -446,7 +447,6 @@ public class GenericPropertiesCreator {
 	continue;
       tok   = new StringTokenizer(m_InputProperties.getProperty(key), ",");
       names = new HashSet();
-      
       // get classes for all packages
       while (tok.hasMoreTokens()) {
         pkg = tok.nextToken().trim();
@@ -498,6 +498,9 @@ public class GenericPropertiesCreator {
   protected void storeOutputProperties() throws Exception {
     if (VERBOSE)
       System.out.println(Messages.getInstance().getString("GenericPropertiesCreator_StoreOutputProperties_Text_First") + getOutputFilename() + Messages.getInstance().getString("GenericPropertiesCreator_StoreOutputProperties_Text_Second"));
+    System.out.println("Working Directory = " +
+            System.getProperty("user.dir"));
+    System.out.println(getOutputFilename());
     m_OutputProperties.store(
         new FileOutputStream(getOutputFilename()), 
         Messages.getInstance().getString("GenericPropertiesCreator_StoreOutputProperties_Text_Third"));
@@ -527,6 +530,9 @@ public class GenericPropertiesCreator {
    * @see #getOutputProperties()
    */
   public void execute(boolean store) throws Exception {
+	  System.out.println("Working Directory = " +
+	            System.getProperty("user.dir"));
+	  if(GUIChooser.Custom) setInputFilename(CREATOR_FILE_CUSTOM);
     // read properties file
     loadInputProperties();
     

@@ -48,6 +48,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -101,7 +102,7 @@ import weka.gui.visualize.VisualizePanel;
  * @version $Revision: 10793 $
  */
 public class GUIChooser extends JFrame {
-
+ public static boolean Custom=false;
   static {
     try {
       Object MacApp = Class.forName("com.apple.eawt.Application").newInstance();
@@ -173,13 +174,12 @@ public class GUIChooser extends JFrame {
   /** The SimpleCLI */
   protected SimpleCLI m_SimpleCLI;
   
- //zakaria
-  /** Click to open the CustomFunctions */
-  protected JButton m_CustomFunctionsBut = new JButton("Custom Functions");
+  /** Click to open the ExplorerMod */
+  protected JButton m_ExplorerButMod = new JButton("Custom Functions");
 
-  /** The CustomFunctions */
-  protected CustomFunctions m_CustomFunctions;
-
+  /** The frame containing the explorer interface */
+  protected JFrame m_ExplorerFrameMod;
+//zakaria
   /** keeps track of the opened ArffViewer instancs */
   protected Vector m_ArffViewers = new Vector();
 
@@ -315,7 +315,7 @@ public class GUIChooser extends JFrame {
     m_PanelApplications.add(m_ExperimenterBut);
     m_PanelApplications.add(m_KnowledgeFlowBut);
     m_PanelApplications.add(m_SimpleBut);
-    m_PanelApplications.add(m_CustomFunctionsBut);
+    m_PanelApplications.add(m_ExplorerButMod);
 
     // Weka image plus copyright info
     JPanel wekaPan = new JPanel();
@@ -1179,29 +1179,35 @@ public class GUIChooser extends JFrame {
     });
 
     //zakaria
-    m_CustomFunctionsBut.addActionListener(new ActionListener() {
+//    m_CustomFunctionsBut.addActionListener(new ActionListener() {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//          if (m_CustomFunctions == null) {
+//            m_CustomFunctionsBut.setEnabled(false);
+//            try {
+//              m_CustomFunctions = new CustomFunctions();
+//              m_CustomFunctions.setIconImage(m_Icon);
+//            } catch (Exception ex) {
+//              throw new Error(Messages.getInstance().getString(
+//                "GUIChooser_UnableToStartCustomFunctions_Error_Text"));
+//            }
+//            m_CustomFunctions.addWindowListener(new WindowAdapter() {
+//              @Override
+//              public void windowClosing(WindowEvent w) {
+//                m_CustomFunctions.dispose();
+//                m_CustomFunctions = null;
+//                m_CustomFunctionsBut.setEnabled(true);
+//                checkExit();
+//              }
+//            });
+//            m_CustomFunctions.setVisible(true);
+//          }
+//        }
+//      });
+    m_ExplorerButMod.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          if (m_CustomFunctions == null) {
-            m_CustomFunctionsBut.setEnabled(false);
-            try {
-              m_CustomFunctions = new CustomFunctions();
-              m_CustomFunctions.setIconImage(m_Icon);
-            } catch (Exception ex) {
-              throw new Error(Messages.getInstance().getString(
-                "GUIChooser_UnableToStartCustomFunctions_Error_Text"));
-            }
-            m_CustomFunctions.addWindowListener(new WindowAdapter() {
-              @Override
-              public void windowClosing(WindowEvent w) {
-                m_CustomFunctions.dispose();
-                m_CustomFunctions = null;
-                m_CustomFunctionsBut.setEnabled(true);
-                checkExit();
-              }
-            });
-            m_CustomFunctions.setVisible(true);
-          }
+          showExplorerCustom(null);
         }
       });
     /*
@@ -1254,7 +1260,8 @@ public class GUIChooser extends JFrame {
       m_ExplorerFrame.setIconImage(m_Icon);
       m_ExplorerFrame.getContentPane().setLayout(new BorderLayout());
       expl = new Explorer();
-
+      //zakaria
+      Custom=false;
       m_ExplorerFrame.getContentPane().add(expl, BorderLayout.CENTER);
       m_ExplorerFrame.addWindowListener(new WindowAdapter() {
         @Override
@@ -1287,6 +1294,55 @@ public class GUIChooser extends JFrame {
     }
   }
 
+  public void showExplorerCustom(String fileToLoad) {
+	    Explorer expl = null;
+	    if (m_ExplorerFrameMod == null) {
+	      m_ExplorerButMod.setEnabled(false);
+	      m_ExplorerFrameMod = new JFrame("Weka Explorer Custom Fonctions");
+	      m_ExplorerFrameMod.setIconImage(m_Icon);
+	      m_ExplorerFrameMod.getContentPane().setLayout(new BorderLayout());
+	      expl = new Explorer();
+	      //zakaria
+	      Custom=true;
+	      try {
+	    	  GenericPropertiesCreator genericPropertiesCreator=new GenericPropertiesCreator();
+	    	  genericPropertiesCreator.execute(false);
+	    	  GenericObjectEditor editor=new GenericObjectEditor();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      m_ExplorerFrameMod.getContentPane().add(expl, BorderLayout.CENTER);
+	      m_ExplorerFrameMod.addWindowListener(new WindowAdapter() {
+	        @Override
+	        public void windowClosing(WindowEvent w) {
+        	m_ExplorerFrameMod.dispose();
+        	m_ExplorerFrameMod = null;
+        	m_ExplorerButMod.setEnabled(true);
+        	checkExit();
+	        }
+	      });
+	      m_ExplorerFrameMod.pack();
+	      m_ExplorerFrameMod.setSize(800, 600);
+	      m_ExplorerFrameMod.setVisible(true);
+	    } else {
+	      Object o = m_ExplorerFrameMod.getContentPane().getComponent(0);
+	      if (o instanceof Explorer) {
+	        expl = (Explorer) o;
+	      }
+	    }
+
+	    if (fileToLoad != null) {
+	      try {
+	        weka.core.converters.AbstractFileLoader loader =
+	          weka.core.converters.ConverterUtils.getLoaderForFile(fileToLoad);
+	        loader.setFile(new File(fileToLoad));
+	        expl.getPreprocessPanel().setInstancesFromFile(loader);
+	      } catch (Exception ex) {
+	        ex.printStackTrace();
+	      }
+	    }
+	  }
   /**
    * insert the menu item in a sorted fashion.
    * 
@@ -1517,7 +1573,7 @@ public class GUIChooser extends JFrame {
       && (m_KnowledgeFlowFrame == null)
       && (m_SimpleCLI == null)
       //zakaria
-      && (m_CustomFunctions == null)
+      && (m_ExplorerFrameMod == null)
       // tools
       && (m_ArffViewers.size() == 0)
       && (m_SqlViewerFrame == null)
@@ -1595,9 +1651,9 @@ public class GUIChooser extends JFrame {
                 m_chooser.m_SimpleCLI = null;
               }
               //zakaria
-              if (m_chooser.m_CustomFunctions != null) {
-                  m_chooser.m_CustomFunctions.dispose();
-                  m_chooser.m_CustomFunctions = null;
+              if (m_chooser.m_ExplorerFrameMod != null) {
+                  m_chooser.m_ExplorerFrameMod.dispose();
+                  m_chooser.m_ExplorerFrameMod = null;
                 }
               if (m_chooser.m_ArffViewers.size() > 0) {
                 for (int i = 0; i < m_chooser.m_ArffViewers.size(); i++) {
