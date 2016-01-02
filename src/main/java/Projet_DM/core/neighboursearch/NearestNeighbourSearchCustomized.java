@@ -35,6 +35,7 @@ import weka.core.OptionHandler;
 import weka.core.RevisionHandler;
 import weka.core.RevisionUtils;
 import weka.core.Utils;
+import weka.core.neighboursearch.NearestNeighbourSearch;
 import weka.core.neighboursearch.PerformanceStats;
 
 /**
@@ -44,7 +45,7 @@ import weka.core.neighboursearch.PerformanceStats;
  * @author Ashraf M. Kibriya (amk14[at-the-rate]cs[dot]waikato[dot]ac[dot]nz)
  * @version $Revision: 1.2 $
  */
-public abstract class NearestNeighbourSearchCustomized
+public abstract class NearestNeighbourSearchCustomized extends NearestNeighbourSearch
   implements Serializable, OptionHandler, AdditionalMeasureProducer,
              RevisionHandler {
 
@@ -620,9 +621,11 @@ public abstract class NearestNeighbourSearchCustomized
       String className = nnSearchClassSpec[0];
       nnSearchClassSpec[0] = "";
 
-      setDistanceFunction( (DistanceFunction)
-                            Utils.forName( DistanceFunction.class, 
-                                           className, nnSearchClassSpec) );
+//      setDistanceFunction( (DistanceFunction)
+//                            Utils.forName( DistanceFunction.class, 
+//                                           className, nnSearchClassSpec) );
+      setDistanceFunction( new ManhattanDistance());
+      System.out.println("test");
     }
     else {
       setDistanceFunction(new ManhattanDistance());

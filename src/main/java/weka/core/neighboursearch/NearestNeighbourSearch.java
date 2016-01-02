@@ -26,6 +26,7 @@ import weka.core.DistanceFunction;
 import weka.core.EuclideanDistance;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.ManhattanDistance;
 import weka.core.Option;
 import weka.core.OptionHandler;
 import weka.core.RevisionHandler;

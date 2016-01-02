@@ -197,6 +197,7 @@ public class IBkCustomized
 
     init();
     setKNN(k);
+    System.out.println("test");
   }  
 
   /**

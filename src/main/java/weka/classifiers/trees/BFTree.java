@@ -1404,7 +1404,7 @@ public class BFTree
 
     String[] values = new String[att.numValues()];
     int numCat = values.length; // number of values of the attribute
-    int numClasses = data.numClasses();
+    int numClasses = data.numClasses();//TODO
 
     String bestSplitString = "";
     double bestGain = -Double.MAX_VALUE;
@@ -1424,7 +1424,7 @@ public class BFTree
 	missingStart++;
 	classFreq[(int)inst.value(att)] ++;
       }
-      parentDist[(int)inst.classValue()] += weights[i];
+      parentDist[(int)inst.classValue()] += weights[i];//TODO
     }
 
     // count the number of values that class frequency is not 0
@@ -1901,7 +1901,7 @@ public class BFTree
     double leftWeight = Utils.sum(childDist[0]);
     double rightWeight = Utils.sum(childDist[1]);
 
-    double parentGini = computeGini(parentDist, totalWeight);
+    double parentGini = computeGini(parentDist, totalWeight);//TODO
     double leftGini = computeGini(childDist[0],leftWeight);
     double rightGini = computeGini(childDist[1], rightWeight);
 

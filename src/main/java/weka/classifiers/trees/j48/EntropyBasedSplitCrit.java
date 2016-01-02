@@ -53,13 +53,14 @@ public abstract class EntropyBasedSplitCrit
   /**
    * Computes entropy of distribution before splitting.
    */
-  public final double oldEnt(Distribution bags) {
-
+  public final double oldEnt(Distribution bags) {//TODO
+	System.out.println("old entropy");
     double returnValue = 0;
     int j;
 
     for (j=0;j<bags.numClasses();j++)
       returnValue = returnValue+logFunc(bags.perClass(j));
+    System.out.println(logFunc(bags.total())-returnValue);
     return logFunc(bags.total())-returnValue; 
   }
 
@@ -70,7 +71,6 @@ public abstract class EntropyBasedSplitCrit
     
     double returnValue = 0;
     int i,j;
-
     for (i=0;i<bags.numBags();i++){
       for (j=0;j<bags.numClasses();j++)
 	returnValue = returnValue+logFunc(bags.perClassPerBag(i,j));

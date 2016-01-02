@@ -248,7 +248,7 @@ public class C45Split
     
     // Compute values of criteria for all possible split
     // indices.
-    defaultEnt = infoGainCrit.oldEnt(m_distribution);
+    defaultEnt = infoGainCrit.oldEnt(m_distribution);//TODO
     while (next < firstMiss) {
 	  
       if (trainInstances.instance(next-1).value(m_attIndex)+1e-5 < 

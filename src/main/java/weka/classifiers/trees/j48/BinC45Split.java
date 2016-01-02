@@ -250,7 +250,7 @@ public class BinC45Split
     
     // Compute values of criteria for all possible split
     // indices.
-    defaultEnt = m_infoGainCrit.oldEnt(m_distribution);
+    defaultEnt = m_infoGainCrit.oldEnt(m_distribution);//TODO
     while (next < firstMiss){
 	  
       if (trainInstances.instance(next-1).value(m_attIndex)+1e-5 < 

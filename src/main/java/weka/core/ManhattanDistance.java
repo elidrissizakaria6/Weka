@@ -24,6 +24,7 @@ package weka.core;
 
 import weka.core.TechnicalInformation.Field;
 import weka.core.TechnicalInformation.Type;
+import weka.core.neighboursearch.PerformanceStats;
 
 /**
  <!-- globalinfo-start -->
@@ -123,7 +124,6 @@ public class ManhattanDistance
 
     return result;
   }
-  
   /**
    * Updates the current distance calculated so far with the new difference
    * between two attributes. The difference between the attributes was 
@@ -136,10 +136,9 @@ public class ManhattanDistance
    */
   protected double updateDistance(double currDist, double diff) {
     double	result;
-    
     result  = currDist;
     result += Math.abs(diff);
-    
+   
     return result;
   }
   

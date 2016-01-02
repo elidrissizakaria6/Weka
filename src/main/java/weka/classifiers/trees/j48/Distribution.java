@@ -95,7 +95,7 @@ public class Distribution
    *
    * @exception Exception if something goes wrong
    */
-  public Distribution(Instances source) throws Exception {
+  public Distribution(Instances source) throws Exception {//TODO
     
     m_perClassPerBag = new double [1][0];
     m_perBag = new double [1];
@@ -120,7 +120,7 @@ public class Distribution
 
     int index;
     Instance instance;
-    double[] weights;
+    double[] weights;//TODO
 
     m_perClassPerBag = new double [modelToUse.numSubsets()][0];
     m_perBag = new double [modelToUse.numSubsets()];
@@ -162,7 +162,7 @@ public class Distribution
    * Creates distribution with two bags by merging all bags apart of
    * the indicated one.
    */
-  public Distribution(Distribution toMerge, int index) {
+  public Distribution(Distribution toMerge, int index) {//TODO
 
     int i;
 

@@ -142,6 +142,7 @@ public class EuclideanDistance
    * @return 		the distance between the two given instances
    */
   public double distance(Instance first, Instance second) {
+	    System.out.println("zakarianew");
     return Math.sqrt(distance(first, second, Double.POSITIVE_INFINITY));
   }
   
@@ -162,7 +163,8 @@ public class EuclideanDistance
    * 			Double.POSITIVE_INFINITY.
    */
   public double distance(Instance first, Instance second, PerformanceStats stats) { //debug method pls remove after use
-    return Math.sqrt(distance(first, second, Double.POSITIVE_INFINITY, stats));
+	  System.out.println("zakarianew");
+	  return Math.sqrt(distance(first, second, Double.POSITIVE_INFINITY, stats));
   }
   
   /**
@@ -176,8 +178,8 @@ public class EuclideanDistance
    * @see		#difference(int, double, double)
    */
   protected double updateDistance(double currDist, double diff) {
-    double	result;
-    
+	
+	double	result;
     result  = currDist;
     result += diff * diff;
     
