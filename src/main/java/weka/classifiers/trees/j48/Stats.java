@@ -27,7 +27,7 @@ import weka.core.RevisionUtils;
 import weka.core.Statistics;
 
 /**
- * Class implementing a statistical routine needed by J48 to
+ * Class implementing a statistical routine needed by J48Customized to
  * compute its error estimate.
  *
  * @author Eibe Frank (eibe@cs.waikato.ac.nz)

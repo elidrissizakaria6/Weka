@@ -42,7 +42,7 @@ public class RaceSearchTest
     return new RaceSearch();
   }
 
-  /** Creates a ClassifierSubsetEval with J48 */
+  /** Creates a ClassifierSubsetEval with J48Customized */
   public ASEvaluation getEvaluator() {
     ClassifierSubsetEval eval = new ClassifierSubsetEval();
     eval.setClassifier(new weka.classifiers.trees.J48());

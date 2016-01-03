@@ -37,7 +37,7 @@ public class J48graftTest extends AbstractClassifierTest {
 
   public J48graftTest(String name) { super(name);  }
 
-  /** Creates a default J48 */
+  /** Creates a default J48Customized */
   public Classifier getClassifier() {
     return new J48graft();
   }

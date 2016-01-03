@@ -116,7 +116,7 @@ public class GenericPropertiesCreator {
    * @see GenericObjectEditor 
    * @see #USE_DYNAMIC 
    */
-  protected static String PROPERTY_FILE = "C:/Users/Zakaria/workspace/tmp/weka/src/main/java/weka/gui/GenericObjectEditor.props";
+  protected static String PROPERTY_FILE = "weka/gui/GenericObjectEditor.props";
   
   /** the input file with the packages */
   protected String m_InputFilename;

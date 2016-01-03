@@ -15,7 +15,7 @@
  */
 
 /*
- *    C45ModelSelection.java
+ *    C45ModelSelectionCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */

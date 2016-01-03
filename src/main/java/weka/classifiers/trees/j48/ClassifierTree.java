@@ -56,7 +56,7 @@ public class ClassifierTree
   protected ClassifierTree [] m_sons;           
 
   /** True if node is leaf. */
-  protected boolean m_isLeaf;                   
+  public boolean m_isLeaf;                   
 
   /** True if node is empty. */
   protected boolean m_isEmpty;                  

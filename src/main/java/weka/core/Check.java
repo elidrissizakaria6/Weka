@@ -95,7 +95,7 @@ public abstract class Check
    * it is an instance of the specified class. For convenience one can also
    * specify a classname prefix (e.g., "weka.classifiers") to avoid long 
    * classnames and then instantiate it with the shortened classname (e.g.,
-   * "trees.J48").
+   * "trees.J48Customized").
    * 
    * @param prefix	the classname prefix (without trailing dot)
    * @param cls		the class to check whether the generated object is an

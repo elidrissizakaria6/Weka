@@ -42,7 +42,7 @@ public class ClassifierSubsetEvalTest
     return new GreedyStepwise();
   }
 
-  /** Creates a ClassifierSubsetEval with J48 as classifier */
+  /** Creates a ClassifierSubsetEval with J48Customized as classifier */
   public ASEvaluation getEvaluator() {
     ClassifierSubsetEval eval = new ClassifierSubsetEval();
     eval.setClassifier(new weka.classifiers.trees.J48());

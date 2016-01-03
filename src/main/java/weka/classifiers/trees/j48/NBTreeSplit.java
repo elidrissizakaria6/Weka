@@ -15,7 +15,7 @@
  */
 
 /*
- *    NBTreeSplit.java
+ *    NBTreeSplitCustomized.java
  *    Copyright (C) 2004 University of Waikato, Hamilton, New Zealand
  *
  */

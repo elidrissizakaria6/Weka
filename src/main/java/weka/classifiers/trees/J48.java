@@ -15,7 +15,7 @@
  */
 
 /*
- *    J48.java
+ *    J48Customized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -618,9 +618,9 @@ public class J48
       return "No classifier built";
     }
     if (m_unpruned)
-      return "J48 unpruned tree\n------------------\n" + m_root.toString();
+      return "J48Customized unpruned tree\n------------------\n" + m_root.toString();
     else
-      return "J48 pruned tree\n------------------\n" + m_root.toString();
+      return "J48Customized pruned tree\n------------------\n" + m_root.toString();
   }
 
   /**

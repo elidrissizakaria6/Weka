@@ -1916,7 +1916,7 @@ public class BFTree
    * @param total 	class distributions
    * @return 		Gini index of the class distributions
    */
-  protected double computeGini(double[] dist, double total) {
+  protected double computeGini(double[] dist, double total) {//TODO
     if (total==0) return 0;
     double val = 0;
     for (int i=0; i<dist.length; i++) {

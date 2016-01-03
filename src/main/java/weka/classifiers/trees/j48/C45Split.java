@@ -15,7 +15,7 @@
  */
 
 /*
- *    C45Split.java
+ *    C45SplitCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */

@@ -15,7 +15,7 @@
  */
 
 /*
- *    BinC45ModelSelection.java
+ *    BinC45ModelSelectionCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */

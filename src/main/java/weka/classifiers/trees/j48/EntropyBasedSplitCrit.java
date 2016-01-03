@@ -15,7 +15,7 @@
  */
 
 /*
- *    EntropyBasedSplitCrit.java
+ *    EntropyBasedSplitCritCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -53,38 +53,85 @@ public abstract class EntropyBasedSplitCrit
   /**
    * Computes entropy of distribution before splitting.
    */
-  public final double oldEnt(Distribution bags) {//TODO
+  public final double oldEntbak(Distribution bags) {//TODO
 	System.out.println("old entropy");
     double returnValue = 0;
     int j;
 
     for (j=0;j<bags.numClasses();j++)
       returnValue = returnValue+logFunc(bags.perClass(j));
-    System.out.println(logFunc(bags.total())-returnValue);
     return logFunc(bags.total())-returnValue; 
   }
-
+/**
+ * 
+ * Zakaria computeGini
+ */
+  public final double oldEnt(Distribution bags) {//TODO
+	  double[] dist =new double[bags.numClasses()]; 
+	  double total = 0;
+	  for (int j=0;j<bags.numClasses();j++){
+		  dist[j]=bags.perClass(j);
+		  total+=dist[j];
+	  }
+	  if (total==0) return 0;
+	    double val = 0;
+	    for (int i=0; i<dist.length; i++) {
+	      val += (dist[i]/total)*(dist[i]/total);
+	    }
+	    System.out.println("numclass"+bags.numClasses()+" numbags"+bags.numBags());
+	    return 1- val;
+	  }
   /**
    * Computes entropy of distribution after splitting.
    */
-  public final double newEnt(Distribution bags) {
+  public final double newEntbak(Distribution bags) {
     
     double returnValue = 0;
     int i,j;
     for (i=0;i<bags.numBags();i++){
       for (j=0;j<bags.numClasses();j++)
-	returnValue = returnValue+logFunc(bags.perClassPerBag(i,j));
+    returnValue = returnValue+logFunc(bags.perClassPerBag(i,j));
       returnValue = returnValue-logFunc(bags.perBag(i));
     }
     return -returnValue;
   }
-
+  /**
+   * GINI zakaria
+   */
+  public final double newEnt(Distribution bags) {
+	  double[] dist =new double[bags.numClasses()]; 
+	  double n,ni,Somme = 0;
+	  double total = 0;
+	    double returnValue = 0;
+	    n=0;
+	    double val = 0;
+	    for (int j=0;j<bags.numClasses();j++){
+	    	n+=bags.perClass(j);
+	    }
+	    for (int k=0;k<bags.numBags();k++){
+	    for (int j=0;j<bags.numClasses();j++){
+			  dist[j]=bags.perClassPerBag(k, j);
+			  total+=dist[j];
+			  val += (dist[j]/total)*(dist[j]/total);
+			  ni=bags.perClass(j);
+			  Somme+=ni/n*(val);
+		  }
+	    total=0;
+		    
+//		    for (int i=0; i<dist.length; i++) {
+//		      val += (dist[i]/total)*(dist[i]/total);
+//			    ni=bags.perClass(i);
+//			    Somme+=ni/n*(val); 
+//		    }
+	    }
+	    System.out.println("N="+n+"Somme"+(-Somme));
+	    return Somme;
+	  }
   /**
    * Computes entropy after splitting without considering the
    * class values.
    */
   public final double splitEnt(Distribution bags) {
-
     double returnValue = 0;
     int i;
 

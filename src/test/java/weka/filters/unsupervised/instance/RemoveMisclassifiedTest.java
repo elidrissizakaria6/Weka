@@ -65,7 +65,7 @@ public class RemoveMisclassifiedTest
   }
 
   /**
-   * Creates a RemoveMisclassified, with either J48 (true) or M5P (false)
+   * Creates a RemoveMisclassified, with either J48Customized (true) or M5P (false)
    * as classifier
    */
   protected Filter getFilter(boolean nominal) {

@@ -15,7 +15,7 @@
  */
 
 /*
- *    GainRatioSplitCrit.java
+ *    GainRatioSplitCritCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -47,7 +47,6 @@ public final class GainRatioSplitCrit
     double denumerator;
     
     numerator = oldEnt(bags)-newEnt(bags);
-
     // Splits with no gain are useless.
     if (Utils.eq(numerator,0))
       return Double.MAX_VALUE;

@@ -43,7 +43,7 @@ public class GridSearchTest
   }
 
   /**
-   * Creates a GridSearch with J48 + unsup. Discretize filter sinze the random
+   * Creates a GridSearch with J48Customized + unsup. Discretize filter sinze the random
    * test dataset always results in singular matrix in LU decomposition of
    * the PLSFilter.
    * 

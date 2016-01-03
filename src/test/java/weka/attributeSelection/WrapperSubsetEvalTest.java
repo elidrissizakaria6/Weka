@@ -42,7 +42,7 @@ public class WrapperSubsetEvalTest
     return new GreedyStepwise();
   }
 
-  /** Creates a WrapperSubsetEval with J48 */
+  /** Creates a WrapperSubsetEval with J48Customized */
   public ASEvaluation getEvaluator() {
     WrapperSubsetEval eval = new WrapperSubsetEval();
     eval.setClassifier(new weka.classifiers.trees.J48());

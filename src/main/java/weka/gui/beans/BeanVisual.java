@@ -166,7 +166,7 @@ public class BeanVisual
    * types of beans (eg. DataSource, Classifier etc)
    * are assumed to exist, it allows developers to add custom icons for
    * for specific instantiations of these beans 
-   * (eg. J48, DiscretizeFilter etc) at their leisure.
+   * (eg. J48Customized, DiscretizeFilter etc) at their leisure.
    *
    * @param iconPath path to
    * @param animatedIconPath a <code>String</code> value

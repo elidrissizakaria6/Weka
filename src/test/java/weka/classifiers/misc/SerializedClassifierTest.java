@@ -96,7 +96,7 @@ public class SerializedClassifierTest
   /**
    * creates a classifier, trains and serializes it
    * 
-   * @param data	the data to use (J48 with nominal class, M5P with
+   * @param data	the data to use (J48Customized with nominal class, M5P with
    * 			numeric class)
    * @return		the results for the data
    */
@@ -132,7 +132,7 @@ public class SerializedClassifierTest
   /**
    * performs the actual test
    * 
-   * @param nomClass	whether to use a nominal class with J48 (TRUE) or 
+   * @param nomClass	whether to use a nominal class with J48Customized (TRUE) or 
    * 			a numeric one with M5P (FALSE)
    */
   protected void performTest(boolean nomClass) {
@@ -205,7 +205,7 @@ public class SerializedClassifierTest
   }
   
   /**
-   * tests a serialized classifier (J48) handling nominal classes
+   * tests a serialized classifier (J48Customized) handling nominal classes
    */
   public void testNominalClass() {
     performTest(true);
@@ -237,7 +237,7 @@ public class SerializedClassifierTest
    * Runs a regression test -- this checks that the output of the tested
    * object matches that in a reference version. When this test is
    * run without any pre-existing reference output, the reference version
-   * is created. Uses J48 for this purpose.
+   * is created. Uses J48Customized for this purpose.
    */
   public void testRegression() {
     Regression 		reg;

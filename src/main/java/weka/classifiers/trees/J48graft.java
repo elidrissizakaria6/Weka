@@ -103,7 +103,7 @@ import java.util.Vector;
  <!-- options-end -->
  *
  * @author Janice Boughton (jrbought@csse.monash.edu.au)
- *  (based on J48.java written by Eibe Frank)
+ *  (based on J48Customized.java written by Eibe Frank)
  * @version $Revision: 5535 $
  */
 public class J48graft 

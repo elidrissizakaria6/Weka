@@ -231,7 +231,7 @@ public class TreeVisualizer
   /** Similar to add children but now it removes children. */
   private JMenuItem m_remChildren;
 
-  /** Use this to have J48 classify this node. */
+  /** Use this to have J48Customized classify this node. */
   private JMenuItem m_classifyChild;
   
   /** Use this to dump the instances from this node to the vis panel. */

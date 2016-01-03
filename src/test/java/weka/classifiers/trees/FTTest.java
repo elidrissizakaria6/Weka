@@ -37,7 +37,7 @@ public class FTTest extends AbstractClassifierTest {
 
   public FTTest(String name) { super(name);  }
 
-  /** Creates a default J48 */
+  /** Creates a default J48Customized */
   public Classifier getClassifier() {
     return new FT();
   }

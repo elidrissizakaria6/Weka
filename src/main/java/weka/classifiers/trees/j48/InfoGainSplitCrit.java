@@ -15,7 +15,7 @@
  */
 
 /*
- *    InfoGainSplitCrit.java
+ *    InfoGainSplitCritCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -46,7 +46,6 @@ public final class InfoGainSplitCrit
     double numerator;
         
     numerator = oldEnt(bags)-newEnt(bags);
-
     // Splits with no gain are useless.
     if (Utils.eq(numerator,0))
       return Double.MAX_VALUE;

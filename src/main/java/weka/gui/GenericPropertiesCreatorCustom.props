@@ -21,7 +21,7 @@ weka.experiment.SplitEvaluator=\
 
 # Lists the Classifiers-Packages I want to choose from
 weka.classifiers.Classifier=\
-Projet_DM.classifiers.lazy
+ Projet_DM.classifiers.lazy
 
 # Lists the Filters-Packages I want to choose from
 weka.filters.Filter= \

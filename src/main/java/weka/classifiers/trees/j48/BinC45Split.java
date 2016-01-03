@@ -15,7 +15,7 @@
  */
 
 /*
- *    BinC45Split.java
+ *    BinC45SplitCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -251,6 +251,7 @@ public class BinC45Split
     // Compute values of criteria for all possible split
     // indices.
     defaultEnt = m_infoGainCrit.oldEnt(m_distribution);//TODO
+    System.out.println("BinC45");
     while (next < firstMiss){
 	  
       if (trainInstances.instance(next-1).value(m_attIndex)+1e-5 < 

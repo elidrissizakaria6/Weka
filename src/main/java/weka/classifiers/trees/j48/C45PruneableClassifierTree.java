@@ -15,7 +15,7 @@
  */
 
 /*
- *    C45PruneableClassifierTree.java
+ *    C45PruneableClassifierTreeCustomized.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
